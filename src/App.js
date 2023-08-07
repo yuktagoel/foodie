@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Header = () => {
+  return <div className='header'>
+    <div className='logo'>
+      <img src='https://penji.co/wp-content/uploads/2022/08/11.Foodigy-logo.jpg' alt='google logo' />
+      </div> 
+      <div className='nav-items'>
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+      </div>
 }
-
-export default App;
+const AppLayout = () => {
+  return (
+    <div className='App'>
+      <Header/>
+    </div>
+  )
+}
+export default AppLayout
