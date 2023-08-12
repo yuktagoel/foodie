@@ -2,6 +2,7 @@ import RestroCard from "./RestroCard";
 // import { resdata } from "../utils/restaurant";
 import Search from "./Search";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 // import Filter from "./Filter";
 
 const Container = () => {
@@ -24,16 +25,14 @@ const Container = () => {
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
+  console.log(cards, "cards");
 
   useEffect(() => {
     fetchData();
   }, []);
 
 
-  if (cards?.length === 0) {
-    return <div>Loading...</div>;
-  }
-  return (
+  return cards?.length === 0 || !cards ?<Shimmer>Loading</Shimmer> :(
     <div>
       <div className="flex justify-between">
         {/* <button className="bg-blue-200 h-12 w-24" onClick={handleClick}> */}
