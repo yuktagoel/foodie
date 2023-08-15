@@ -6,39 +6,54 @@ import Shimmer from "./Shimmer";
 // import Filter from "./Filter";
 
 const Container = () => {
-
   const [cards, setCards] = useState([]);
+  const [search, setSearch] = useState("");
 
-  // const handleClick = () => {
-  //   setCards(
-  //     data.filter((res) => {
-  //       return res.info.avgRating > 4.2;
-  //     })
-  //   );
-  // };
+  const handleClick = () => {
+    cards?.length > 0 && console.log("changing");
+    console.log(cards);
+    setCards(
+      cards.filter((card) => {
+        return card.info.avgRating >= 4.5;
+      })
+    )
+  };
+
   const fetchData = async () => {
+    console.log("fetching");
     const req = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await req.json();
+    console.log(json.data);
     setCards(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log(cards, "cards");
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-  return cards?.length === 0 || !cards ?<Shimmer>Loading</Shimmer> :(
+  return cards?.length === 0 || !cards ? (
+    <Shimmer>Loading</Shimmer>
+  ) : (
     <div>
-      <div className="flex justify-between">
-        {/* <button className="bg-blue-200 h-12 w-24" onClick={handleClick}> */}
-          {/* TopRated
-        </button> */}
-        <Search />
+      <div className="flex justify-evenly ">
+        <button className="bg-blue-200 h-12 w-24" onClick={handleClick}>
+          TopRated
+        </button>
+        <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
+        <button className="bg-blue-200 h-12 w-24" onClick={()=>{
+              setCards(
+                cards.filter((card) => {
+                  return card.info.name.toLowerCase().includes(search.toLowerCase())
+                })
+              )
+          console.log(search);
+        }}>
+          Search
+        </button>
       </div>
 
       <div className="flex flex-wrap">
