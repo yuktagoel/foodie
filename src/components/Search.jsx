@@ -1,11 +1,14 @@
 const Search = ({ handleClick, value }) => {
   return (
-    <input
-      type="text"
-      className="p-2.5 bg-slate-400 rounded-md h-3 w-72"
-      onChange={handleClick}
-      value={value}
-    ></input>
+    <div className="search__wrapper">
+      <input
+        type="text"
+        className="search__box"
+        onChange={handleClick}
+        value={value}
+        placeholder="What are you looking for?"
+      ></input>
+    </div>
   );
 };
 export default Search;

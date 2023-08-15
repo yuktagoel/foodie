@@ -9,7 +9,7 @@ const Container = () => {
   const [cards, setCards] = useState([]);
   const [searchedCards, setSearchedCards] = useState([]);
   const [search, setSearch] = useState("");
-
+const searchIconHtml = '&#128269';
   const handleClick = () => {
     cards?.length > 0 && console.log("changing");
     console.log(cards);
@@ -43,13 +43,13 @@ const Container = () => {
     <Shimmer>Loading</Shimmer>
   ) : (
     <div>
-      <div className="flex justify-evenly ">
+      <div className="flex ">
         <button className="bg-blue-200 h-12 w-24" onClick={handleClick}>
           TopRated
         </button>
         <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
         <button
-          className="bg-blue-200 h-12 w-24"
+          className="search__button"
           onClick={() => {
             setSearchedCards(
               cards.filter((card) => {
@@ -61,7 +61,7 @@ const Container = () => {
             console.log(search);
           }}
         >
-          Search
+          <span dangerouslySetInnerHTML={{ __html: searchIconHtml }} />
         </button>
       </div>
 

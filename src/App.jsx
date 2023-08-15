@@ -1,16 +1,15 @@
-import './App.css';
+import "./App.css";
 
-import Container from './components/Container';
-import Header from './components/Header';
-import React from 'react';
-
+import Container from "./components/Container";
+import Header from "./components/Header";
+import React from "react";
 
 const AppLayout = () => {
   return (
-    <div className='App'>
+    <div className="body">
       <Header />
-      <Container/>
+      <Container />
     </div>
-  )
-}
-export default AppLayout
+  );
+};
+export default AppLayout;

@@ -6,3 +6,46 @@
     padding: 0 20px;
     background-color: aqua;
 }
+/* navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    background: rebeccapurple;
+    color: white;
+    font-family: Helvetica;
+    font-weight: 300;
+}
+
+.navbar__title {
+    margin-right: auto;
+    font-size: 150%;
+    padding: 12px 16px;
+}
+
+.navbar__item {
+    padding: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* searchBox */
+.search__wrapper{
+    padding: 5px;
+    padding-right:0 ;
+}
+.search__box {
+    border: 3px solid rebeccapurple;
+    border-right: none;
+    padding: 20px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: rebeccapurple;
+  }
+  .search__button{
+    background: rebeccapurple;
+    color: white;
+    padding: 10px;
+    height: 46px;
+    margin-top: 5px;
+  }
