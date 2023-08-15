@@ -17,7 +17,7 @@ const Container = () => {
       cards.filter((card) => {
         return card.info.avgRating >= 4.5;
       })
-    )
+    );
   };
 
   const fetchData = async () => {
@@ -29,11 +29,10 @@ const Container = () => {
     console.log(json.data);
     setCards(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
-      setSearchedCards(
+    );
+    setSearchedCards(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      
-    )
+    );
   };
 
   useEffect(() => {
@@ -49,14 +48,19 @@ const Container = () => {
           TopRated
         </button>
         <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
-        <button className="bg-blue-200 h-12 w-24" onClick={()=>{
-              setSearchedCards(
-                cards.filter((card) => {
-                  return card.info.name.toLowerCase().includes(search.toLowerCase())
-                })
-              )
-          console.log(search);
-        }}>
+        <button
+          className="bg-blue-200 h-12 w-24"
+          onClick={() => {
+            setSearchedCards(
+              cards.filter((card) => {
+                return card.info.name
+                  .toLowerCase()
+                  .includes(search.toLowerCase());
+              })
+            );
+            console.log(search);
+          }}
+        >
           Search
         </button>
       </div>
