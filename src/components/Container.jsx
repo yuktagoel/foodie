@@ -7,6 +7,7 @@ import Shimmer from "./Shimmer";
 
 const Container = () => {
   const [cards, setCards] = useState([]);
+  const [searchedCards, setSearchedCards] = useState([]);
   const [search, setSearch] = useState("");
 
   const handleClick = () => {
@@ -28,7 +29,11 @@ const Container = () => {
     console.log(json.data);
     setCards(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      );
+      setSearchedCards(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      
+    )
   };
 
   useEffect(() => {
@@ -45,7 +50,7 @@ const Container = () => {
         </button>
         <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
         <button className="bg-blue-200 h-12 w-24" onClick={()=>{
-              setCards(
+              setSearchedCards(
                 cards.filter((card) => {
                   return card.info.name.toLowerCase().includes(search.toLowerCase())
                 })
@@ -57,8 +62,8 @@ const Container = () => {
       </div>
 
       <div className="flex flex-wrap">
-        {cards &&
-          cards.map((restaurant) => {
+        {searchedCards &&
+          searchedCards.map((restaurant) => {
             return (
               <RestroCard key={restaurant.info.id} resdata={restaurant.info} />
             );
