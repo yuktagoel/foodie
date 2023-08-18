@@ -49,3 +49,134 @@
     height: 46px;
     margin-top: 5px;
   }
+
+  /* restroMenuShimmer */
+  .restroMenu__shimmer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(206, 201, 201);
+    justify-content: space-between;
+    background: slategrey;
+    height: 200px;
+
+  }
+
+  /*common toggleButton */
+
+label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+span {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #2c3e50;
+    transition: 0.3s;
+    border-radius: 30px;
+}
+
+span:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 3px;
+    bottom: 2.6px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  
+  input:checked + span {
+    background-color: #00c853;
+  }
+  
+  input:checked + span:before {
+    transform: translateX(29px);
+  }
+
+  strong {
+    position: absolute;
+    left: 100%;
+    width: max-content;
+    line-height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+  /* restroMenu */
+.restroMenu__container{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+  .restroMenu__wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgb(206, 201, 201);
+    justify-content: space-between;
+  }
+
+
+.restroMenu__name {
+    font-size: 1.25rem/* 20px */;
+    line-height: 1.75rem/* 28px */;
+    font-weight: 800;
+    padding-bottom: 1rem;
+}
+
+.restroMenu__cuisines{
+    font-size: 1.25rem/* 20px */;
+    line-height: 1.75rem/* 28px */;
+    font-weight: 400;
+}
+
+.restroMenu__address{
+    font-weight: 400;
+}
+
+.restroMenu__rating{
+    font-weight: 300;
+}
+
+.restroMenu__image{
+    height: auto;
+    width: 16rem/* 256px */;
+}
+
+.restroMenu__cost_for_two{
+    font-size: 1rem/* 20px */;
+    border: 1px solid rgb(206, 201, 201);
+    background-color: rgb(241, 203, 231);
+    border-radius: 0.25rem/* 4px */;
+    padding: 0.125rem/* 2px */;
+    margin-top: 1rem;
+    padding-left: 1rem;
+}
+

@@ -6,6 +6,7 @@ import AppLayout from "./App";
 import ContactUs from "./components/header-pages/ContactUs";
 import ErrorPage from "./components/error-page/ErrorPage";
 import Container from "./components/Container";
+import RestroMenu from "./components/menu-page/RestroMenu";
 
 const appRouter = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactUs />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestroMenu />,
       },
     ],
   },

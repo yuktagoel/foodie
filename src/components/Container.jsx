@@ -3,13 +3,14 @@ import RestroCard from "./RestroCard";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // import Filter from "./Filter";
 
 const Container = () => {
   const [cards, setCards] = useState([]);
   const [searchedCards, setSearchedCards] = useState([]);
   const [search, setSearch] = useState("");
-const searchIconHtml = '&#128269';
+  const searchIconHtml = "&#128269";
   const handleClick = () => {
     cards?.length > 0 && console.log("changing");
     console.log(cards);
@@ -43,13 +44,13 @@ const searchIconHtml = '&#128269';
     <Shimmer>Loading</Shimmer>
   ) : (
     <div>
-      <div className="flex ">
+      <div className="flex">
         <button className="bg-blue-200 h-12 w-24" onClick={handleClick}>
           TopRated
         </button>
         <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
         <button
-          className="search__button"
+        className=""
           onClick={() => {
             setSearchedCards(
               cards.filter((card) => {
@@ -58,10 +59,10 @@ const searchIconHtml = '&#128269';
                   .includes(search.toLowerCase());
               })
             );
-            console.log(search);
           }}
         >
-          <span dangerouslySetInnerHTML={{ __html: searchIconHtml }} />
+         Search
+          {/* <span dangerouslySetInnerHTML={{ __html: searchIconHtml }} /> */}
         </button>
       </div>
 
@@ -69,7 +70,15 @@ const searchIconHtml = '&#128269';
         {searchedCards &&
           searchedCards.map((restaurant) => {
             return (
-              <RestroCard key={restaurant.info.id} resdata={restaurant.info} />
+              <Link
+                to={`/restaurant/${restaurant.info.id}`}
+                key={restaurant.info.id}
+              >
+                <RestroCard
+                  key={restaurant.info.id}
+                  resdata={restaurant.info}
+                />
+              </Link>
             );
           })}
       </div>
