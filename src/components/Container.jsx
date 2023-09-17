@@ -48,22 +48,28 @@ const Container = () => {
         <button className="bg-blue-200 h-12 w-24" onClick={handleClick}>
           TopRated
         </button>
-        <Search handleClick={(e) => setSearch(e.target.value)} value={search} />
-        <button
-        className=""
-          onClick={() => {
-            setSearchedCards(
-              cards.filter((card) => {
-                return card.info.name
-                  .toLowerCase()
-                  .includes(search.toLowerCase());
-              })
-            );
-          }}
-        >
-         Search
-          {/* <span dangerouslySetInnerHTML={{ __html: searchIconHtml }} /> */}
-        </button>
+        <div className="search__with_button">
+          <Search
+            handleClick={(e) => setSearch(e.target.value)}
+            value={search}
+          />
+          <button
+            onClick={() => {
+              setSearchedCards(
+                cards.filter((card) => {
+                  return card.info.name
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+                })
+              );
+            }}
+          >
+            <span
+              className="search__icon"
+              dangerouslySetInnerHTML={{ __html: searchIconHtml }}
+            />
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-wrap">

@@ -1,6 +1,6 @@
 const Search = ({ handleClick, value }) => {
   return (
-    <div className="search__wrapper bg-slate-500">
+    <div className="search__wrapper">
       <input
         type="text"
         className="search__box"

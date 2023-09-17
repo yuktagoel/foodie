@@ -7,6 +7,7 @@ import ContactUs from "./components/header-pages/ContactUs";
 import ErrorPage from "./components/error-page/ErrorPage";
 import Container from "./components/Container";
 import RestroMenu from "./components/menu-page/RestroMenu";
+import girl from "./assets/girl.gif";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,7 +21,9 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <About name={"hello"} img={girl} desc={"Hi, I am Yukta Goel"} />
+        ),
       },
       {
         path: "/contact",
