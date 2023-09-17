@@ -1,33 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Shimmer from "../Shimmer";
-import { cloudnaryURL, menuURL } from "../../utils/constants";
+import { cloudnaryURL } from "../../utils/constants";
 import RestroMenuShimmer from "../loader-page/RestroMenuShimmer";
 import { Toggle } from "../reusable/ToggleButton";
 import { useParams } from "react-router-dom";
+import useMenuData from "../hooks/useMenuData";
 
 const RestroMenu = () => {
-  const [resInfo, setResInfo] = useState([]);
   const [onlyVeg, setOnlyVeg] = useState(false);
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const resInfo = useMenuData(resId);
 
-  const fetchData = async () => {
-    const data = await fetch(menuURL + resId);
-    const menu = await data.json();
-
-    console.log(
-      menu.data.cards[0].card.card.info.name,
-      // [2].groupedCard.cardGroupMap.REGULAR.cards[7].card.card
-      // .itemCards,
-      "ae lo ji"
-    );
-
-    setResInfo(menu.data.cards[0].card.card.info);
-  };
   resInfo && console.log(resInfo);
   return resInfo.length === 0 ? (
     <RestroMenuShimmer />
