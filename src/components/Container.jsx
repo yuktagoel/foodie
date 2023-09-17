@@ -1,44 +1,29 @@
 import RestroCard from "./RestroCard";
-// import { resdata } from "../utils/restaurant";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-// import Filter from "./Filter";
+import useFetchCardData from "./hooks/useFetchCardData";
 
 const Container = () => {
-  const [cards, setCards] = useState([]);
   const [searchedCards, setSearchedCards] = useState([]);
   const [search, setSearch] = useState("");
   const searchIconHtml = "&#128269";
   const handleClick = () => {
-    cards?.length > 0 && console.log("changing");
-    console.log(cards);
-    setCards(
-      cards.filter((card) => {
+    searchedCards?.length > 0 && console.log("changing");
+    console.log(searchedCards);
+    setSearchedCards(
+      searchedCards.filter((card) => {
         return card.info.avgRating >= 4.5;
       })
     );
   };
 
-  const fetchData = async () => {
-    console.log("fetching");
-    const req = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await req.json();
-    console.log(json.data);
-    setCards(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setSearchedCards(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  const cards = useFetchCardData();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setSearchedCards(cards);
+  }, [cards]);
 
   return cards?.length === 0 || !cards ? (
     <Shimmer>Loading</Shimmer>
