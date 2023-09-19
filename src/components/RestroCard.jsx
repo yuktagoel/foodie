@@ -2,15 +2,30 @@ import React from "react";
 import { cloudnaryURL } from "../utils/constants";
 
 const RestroCard = ({ resdata }) => {
+  const {
+    cloudinaryImageId,
+    name,
+    avgRating,
+    cuisines,
+    costForTwo,
+    deliveryTime,
+  } = resdata;
+
   return (
-    <div className="flex flex-col w-64 hover:border-2 cursor-pointer bg-slate-300 p-4 m-2 gap-2">
-      <img src={cloudnaryURL + resdata.cloudinaryImageId} alt={"food"}></img>
-      <div className="text-xl font-medium">{resdata.name}</div>
-      <div className="text-sm font-extralight truncate">
-        {resdata.cuisines.join(",")}
-      </div>
-      <div className="text-xl font-light">{resdata.costForTwo}</div>
-      <div className="text-xl font-light">Rating: {resdata.avgRating}</div>
+    <div
+      data-testid="resCard"
+      className="m-4 p-4 w-64 min-h-[400px] rounded-lg bg-gray-100 hover:bg-gray-200"
+    >
+      <img
+        className="rounded-lg"
+        alt="res-logo"
+        src={cloudnaryURL + cloudinaryImageId}
+      />
+      <h3 className="font-bold py-4 text-lg">{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>{avgRating} stars</h4>
+      <h4>₹{costForTwo / 100} FOR TWO</h4>
+      <h4>{deliveryTime} minutes</h4>
     </div>
   );
 };
