@@ -10,7 +10,7 @@ const Container = () => {
   const [cards, setCards] = useState([]);
   const [searchedCards, setSearchedCards] = useState([]);
   const [search, setSearch] = useState("");
-  const searchIconHtml = "&#128269";
+
   const handleClick = () => {
     cards?.length > 0 && console.log("changing");
     console.log(cards);
@@ -41,19 +41,20 @@ const Container = () => {
   }, []);
 
   return cards?.length === 0 || !cards ? (
-    <Shimmer>Loading</Shimmer>
+    <Shimmer className="m-6">Loading</Shimmer>
   ) : (
     <div>
-      <div className="flex">
-        <button className="bg-blue-200 h-12 w-24" onClick={handleClick}>
-          TopRated
+      <div className="flex justify-evenly">
+        <button className="bg-[#663399] h-12 w-24 m-4" onClick={handleClick}>
+          <span className="text-white">TopRated</span>
         </button>
-        <div className="search__with_button">
+        <div className="flex flex-row gap-2 items-center m-4 border-2 border-[#663399] w-[30%]">
           <Search
             handleClick={(e) => setSearch(e.target.value)}
             value={search}
           />
           <button
+            className="bg-[#663399] h-12 w-24"
             onClick={() => {
               setSearchedCards(
                 cards.filter((card) => {
@@ -64,14 +65,11 @@ const Container = () => {
               );
             }}
           >
-            <span
-              className="search__icon"
-              dangerouslySetInnerHTML={{ __html: searchIconHtml }}
-            />
+            <span className="text-white">Search</span>
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap m-6">
         {searchedCards &&
           searchedCards.map((restaurant) => {
             return (

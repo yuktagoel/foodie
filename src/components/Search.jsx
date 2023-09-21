@@ -1,9 +1,9 @@
 const Search = ({ handleClick, value }) => {
   return (
-    <div className="search__wrapper">
+    <div className="w-full">
       <input
         type="text"
-        className="search__box"
+        className="w-full p-2 outline-0"
         onChange={handleClick}
         value={value}
         placeholder="What are you looking for?"
