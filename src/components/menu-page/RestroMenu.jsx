@@ -5,6 +5,7 @@ import RestroMenuShimmer from "../loader-page/RestroMenuShimmer";
 import { Toggle } from "../reusable/ToggleButton";
 import { useParams } from "react-router-dom";
 import useMenuData from "../hooks/useMenuData";
+import StarSvg from "../reusable/star";
 
 const RestroMenu = () => {
   const [onlyVeg, setOnlyVeg] = useState(false);
@@ -12,7 +13,6 @@ const RestroMenu = () => {
 
   const resInfo = useMenuData(resId);
 
-  resInfo && console.log(resInfo);
   return resInfo.length === 0 ? (
     <RestroMenuShimmer />
   ) : (
@@ -20,17 +20,19 @@ const RestroMenu = () => {
       <div className="restroMenu__wrapper">
         <div>
           <div className="restroMenu__name">{resInfo.name}</div>
-          <div className="restroMenu__cuisines">
-            {resInfo.cuisines.join(",")}
-          </div>
-          <div className="restroMenu__address">
-            {resInfo.locality + ", " + resInfo.city}
-          </div>
           <div className="restroMenu__rating">
-            {resInfo.avgRating + " Rating"}
+            {resInfo.avgRating}
+            <StarSvg />
           </div>
-          <div className="restroMenu__cost_for_two p-0.5">
+          <div className="restroMenu__cuisines">
+            {resInfo.cuisines?.join(",")}
+          </div>
+          <div className="restroMenu__address">{resInfo.areaName}</div>
+          <div className="restroMenu__cost_for_two">
             {resInfo.costForTwoMessage}
+          </div>
+          <div className="restroMenu__fees_message">
+            {resInfo.feeDetails?.message}
           </div>
         </div>
         <div className="restroMenu__image">
@@ -40,14 +42,14 @@ const RestroMenu = () => {
           ></img>
         </div>
       </div>
-      <Toggle
-        className="restroMenu__toggle pt-6"
+      {/* <Toggle
+        className="restroMenu__toggle"
         label="Veg"
         toggled={onlyVeg}
         onClick={() => {
           setOnlyVeg(!onlyVeg);
         }}
-      />
+      /> */}
     </div>
   );
 };

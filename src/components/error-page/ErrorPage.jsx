@@ -4,7 +4,6 @@ import Header from "../Header";
 
 const ErrorPage = () => {
   const err = useRouteError();
-  console.log(err);
   return (
     <>
       <Header />

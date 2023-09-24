@@ -12,8 +12,6 @@ const Container = () => {
   const [search, setSearch] = useState("");
 
   const handleClick = () => {
-    cards?.length > 0 && console.log("changing");
-    console.log(cards);
     setSearchedCards(
       cards.filter((card) => {
         return card.info.avgRating >= 4.5;
@@ -22,12 +20,10 @@ const Container = () => {
   };
 
   const fetchData = async () => {
-    console.log("fetching");
     const req = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await req.json();
-    console.log(json.data);
     setCards(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -69,7 +65,7 @@ const Container = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap m-6">
+      <div className="flex flex-wrap justify-evenly ">
         {searchedCards &&
           searchedCards.map((restaurant) => {
             return (
