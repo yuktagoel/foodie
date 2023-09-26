@@ -12,9 +12,8 @@ const useMenuData = (resId) => {
   const fetchData = async () => {
     const data = await fetch(menuURL + resId);
     const json = await data.json();
-    setResInfo(json.data.cards[0].card.card.info);
+    setResInfo(json.data);
   };
   return resInfo;
 };
-
 export default useMenuData;
